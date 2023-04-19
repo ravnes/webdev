@@ -1,26 +1,34 @@
 import logo from './logo.svg';
 import './App.css';
 import * as d3 from "d3";
+import React, { useState } from 'react';
+
+
+let clicks = 0
+
+function onClick() {
+  clicks += 1;
+  document.getElementById("clicks").innerHTML = clicks;
+}
+
 
 function App() {
+  const [click, setClick] = useState(0);
+
+  const onChange = () => {
+    setClick(click + 1)
+  }
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <button onClick={onChange}>click</button>
+      <p id="id">{click}</p>
+
       </header>
     </div>
   );
 }
+
 
 export default App;
